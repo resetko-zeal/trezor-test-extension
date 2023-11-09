@@ -1,0 +1,20 @@
+{
+  "name": "trezor-extension",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.250",
+    "typescript": "5.0.2",
+    "vite": "4.4.5"
+  },
+  "dependencies": {
+    "@trezor/connect-web": "9.1.5",
+    "tslib": "2.6.2"
+  }
+}
