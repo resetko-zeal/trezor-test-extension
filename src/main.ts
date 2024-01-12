@@ -3,9 +3,10 @@ import "./style.css";
 import { fetchAddresses } from "./helpers/fetchAddresses";
 import { setOutput } from "./helpers/setOutput";
 
-const connect = async () => {
+const connect = async (e: MouseEvent) => {
   try {
-    const addresses = await fetchAddresses(2);
+    console.log("fetching via service worker", e.target);
+    const addresses = await fetchAddresses();
 
     console.log(addresses);
 

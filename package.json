@@ -14,7 +14,6 @@
     "vite": "4.4.5"
   },
   "dependencies": {
-    "@trezor/connect-web": "9.1.5",
     "tslib": "2.6.2"
   }
 }
