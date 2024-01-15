@@ -48,20 +48,24 @@ chrome.action.onClicked.addListener(() => {
 });
 
 chrome.runtime.onMessage.addListener((message, _, sendResponse) => {
-  if (message !== "trezor-test") {
-    return;
+  if (message === "trezor-test") {
+    console.log("Received message in service worker: ", message);
+
+    fetchAddresses(2)
+      .then((result) => {
+        sendResponse(result);
+      })
+      .catch((error) => {
+        console.log("failed to fetch addresses", error);
+        sendResponse(error.message);
+      });
+
+    return true;
   }
 
-  console.log("Received message in service worker: ", message);
-
-  fetchAddresses(2)
-    .then((result) => {
-      sendResponse(result);
-    })
-    .catch((error) => {
-      console.log("failed to fetch addresses", error);
-      sendResponse(error.message);
+  if (message == "create-tab") {
+    chrome.tabs.create({
+      url: "https://google.com/search?q=trezor",
     });
-
-  return true;
+  }
 });

@@ -18,6 +18,15 @@ const connect = async (e: MouseEvent) => {
 
 const init = () => {
   const connectButton = document.getElementById("connect");
+  const tabButton = document.getElementById("tab");
+
+  if (tabButton) {
+    tabButton.addEventListener("click", async () => {
+      const response = await chrome.runtime.sendMessage("create-tab");
+
+      console.log("response from tab", response);
+    });
+  }
 
   if (connectButton) {
     connectButton.addEventListener("click", connect);
